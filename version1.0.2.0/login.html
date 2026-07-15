@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Acceso al Sistema | Mi Tienda</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="auth-body"> 
+    <div class="auth-container" style="display: flex; justify-content: center; align-items: center; min-height: 100vh;">
+        
+        <div id="login-card" class="card auth-card" style="width: 100%; max-width: 400px; padding: 30px;">
+            <h2 style="text-align: center; color: var(--accent);">🔐 Iniciar Sesión</h2>
+            <form id="login-form">
+                <div class="field" style="margin-bottom: 15px;">
+                    <label>Usuario</label>
+                    <input type="text" id="login-user" required placeholder="Tu nombre de usuario" style="width: 100%;">
+                </div>
+                <div class="field" style="margin-bottom: 20px;">
+                    <label>Contraseña</label>
+                    <input type="password" id="login-pass" required placeholder="••••••••" style="width: 100%;">
+                </div>
+                <button type="submit" class="btn-primary" style="width: 100%; padding: 12px; font-weight: bold;">Entrar al Sistema</button>
+            </form>
+            <p style="text-align: center; margin-top: 20px; font-size: 0.9em;">
+                ¿No tienes cuenta? <a href="#" onclick="toggleAuth()" style="color: var(--accent); font-weight: bold; text-decoration: none;">Regístrate aquí</a>
+            </p>
+        </div>
+
+        <div id="register-card" class="card auth-card" style="display: none; width: 100%; max-width: 400px; padding: 30px;">
+            <h2 style="text-align: center; color: #28a745;">📝 Crear Cuenta</h2>
+            <form id="register-form">
+                <div class="field" style="margin-bottom: 15px;">
+                    <label>Nombre Completo</label>
+                    <input type="text" id="reg-name" required placeholder="Ej: Juan Pérez" style="width: 100%;">
+                </div>
+                <div class="field" style="margin-bottom: 15px;">
+                    <label>Usuario</label>
+                    <input type="text" id="reg-user" required placeholder="Nombre de usuario" style="width: 100%;">
+                </div>
+                <div class="field" style="margin-bottom: 15px;">
+                    <label>Teléfono</label>
+                    <input type="tel" id="reg-phone" placeholder="Ej: +52 123 456 7890" style="width: 100%; padding: 10px; border-radius: 4px; border: 1px solid var(--border); background: var(--bg-main); color: var(--text-main);">
+                </div>
+                <div class="field" style="margin-bottom: 15px;">
+                    <label>Email (Opcional)</label>
+                    <input type="email" id="reg-email" placeholder="correo@ejemplo.com" style="width: 100%; padding: 10px; border-radius: 4px; border: 1px solid var(--border); background: var(--bg-main); color: var(--text-main);">
+                </div>
+                <div class="field" style="margin-bottom: 20px;">
+                    <label>Contraseña</label>
+                    <input type="password" id="reg-pass" required placeholder="Mínimo 4 caracteres" style="width: 100%;">
+                </div>
+                <div class="field" style="margin-bottom: 15px;">
+                    <label>Dirección</label>
+                    <input type="text" id="reg-address" placeholder="Calle, Ciudad, Código Postal" style="width: 100%; padding: 10px; border-radius: 4px; border: 1px solid var(--border); background: var(--bg-main); color: var(--text-main);">
+                </div>
+
+                <div class="field" style="margin-bottom: 15px;">
+                    <label>Tipo de Usuario</label>
+                    <select id="reg-role" style="width: 100%; padding: 10px; border-radius: 4px; border: 1px solid var(--border); background: var(--bg-main); color: var(--text-main);">
+                        <option value="user">Cliente</option>
+                        <option value="seller">Vendedor</option>
+                    </select>
+                </div>
+                <button type="submit" class="btn-accent" style="width: 100%; padding: 12px; background-color: #28a745; color: white; border: none; border-radius: 4px; font-weight: bold; cursor: pointer;">Crear mi Cuenta</button>
+            </form>
+            <p style="text-align: center; margin-top: 20px; font-size: 0.9em;">
+                ¿Ya tienes cuenta? <a href="#" onclick="toggleAuth()" style="color: #28a745; font-weight: bold; text-decoration: none;">Inicia sesión</a>
+            </p>
+        </div>
+    </div>
+
+    <script src="ui-settings.js"></script> 
+    <script src="auth.js"></script>
+</body>
+</html>
