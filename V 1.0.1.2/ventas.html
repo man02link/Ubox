@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>U-Box | Historial de Ventas</title>
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.5.25/jspdf.plugin.autotable.min.js"></script>
+    
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="ventas.css">
+</head>
+<body>
+
+    <div class="sales-container">
+        <header>
+            <h1>📜 Historial de Ventas</h1>
+            <nav>
+                <a href="menu.html" class="btn-back">Volver al Menú</a>
+            </nav>
+        </header>
+
+        <table class="inventory-table">
+            <thead>
+                <tr>
+                    <th>Ticket ID</th>
+                    <th>Fecha y Hora</th>
+                    <th>Productos (Resumen)</th>
+                    <th>Total Pagado</th>
+                    <th>Acciones</th>
+                </tr>
+            </thead>
+            <tbody id="sales-tbody">
+                <tr>
+                    <td colspan="5" style="text-align:center;">Cargando historial...</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <script src="ventas.js"></script>
+</body>
+</html>

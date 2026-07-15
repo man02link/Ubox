@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sistema de Inventario | Gestión de Productos</title>
+    <link rel="stylesheet" href="style.css"> 
+</head>
+<body>
+
+    <header class="main-header">
+        <div class="header-content">
+            <h1>📦 Gestión de Inventario</h1>
+            <nav class="nav-group">
+                <a href="menu.html" class="button">menu</a>
+                <a href="catalogo.html" class="button">🛒 Ver Catálogo</a>
+                <a href="proveedores.html" class="button" style="background-color: #f7a35c;">🏭 Proveedores</a>
+                <button onclick="toggleSettings()" class="btn-nav" style="background-color: #555;">🎨 Temas</button>
+                <button onclick="logout()" class="btn-nav" style="background-color: #dc3545; color: white; border: none; cursor: pointer;">門 Salir</button>
+            </nav>
+        </div>
+    </header>
+
+    <main class="container">
+        <section class="form-section card"> 
+            <h2 id="form-title">➕ Registrar Nuevo Producto</h2>
+            
+            <form id="product-form" enctype="multipart/form-data">
+                <input type="hidden" id="product-id" name="id">
+
+                <div class="grid-form">
+                    <div class="input-group">
+                        <label>Nombre del Producto:</label>
+                        <input type="text" id="product-name" name="name" placeholder="Ej: Smartphone Samsung" required>
+                    </div>
+
+                    <div class="input-group">
+                        <label>Marca:</label>
+                        <input type="text" id="product-brand" name="brand" placeholder="Ej: Samsung">
+                    </div>
+
+                    <div class="input-group">
+                        <label>Precio ($):</label>
+                        <input type="number" id="product-price" name="price" placeholder="0.00" step="0.01" required>
+                    </div>
+
+                    <div class="input-group">
+                        <label>Cantidad en Stock:</label>
+                        <input type="number" id="product-quantity" name="quantity" placeholder="0" required>
+                    </div>
+
+                    <div class="input-group">
+                        <label>Proveedor Responsable:</label>
+                        <select id="product-supplier" name="Id_suppliers">
+                            <option value="">Cargando proveedores...</option>
+                        </select>
+                    </div>
+
+                    <div class="input-group">
+                        <label>Imagen del Producto:</label>
+                        <input type="file" id="product-image" name="product_image" accept="image/*">
+                    </div>
+                </div>
+
+                <div class="input-group" style="margin-top: 15px;">
+                    <label>Descripción del Producto:</label>
+                    <textarea id="product-description" name="Descripcion" placeholder="Escribe detalles sobre el producto, estado, especificaciones, etc." style="width: 100%; min-height: 100px; padding: 10px; border-radius: 5px; background: #222; color: white; border: 1px solid #444; resize: vertical; font-family: inherit;"></textarea>
+                </div>
+
+                <div id="current-image-preview" style="display: none; margin-top: 15px;">
+                    <p style="font-size: 0.8em; color: #aaa;">Imagen actual:</p>
+                    <img id="image-preview" src="" alt="Vista previa" style="width: 80px; height: 80px; object-fit: cover; border-radius: 5px; border: 1px solid #444;">
+                </div>
+
+                <div class="form-actions" style="margin-top: 20px;">
+                    <button type="submit" id="submit-button" class="button" style="background-color: #ffc107; color: #000; font-weight: bold;">Crear Producto</button>
+                    <button type="button" onclick="resetForm()" class="button" style="background-color: #6c757d;">Cancelar / Limpiar</button>
+                </div>
+            </form>
+        </section>
+
+        <div id="results-box" class="result-box" style="display: none;"></div>
+
+        <hr style="margin: 40px 0; border: 0; border-top: 1px solid #333;">
+
+        <section class="list-section">
+            <h2>📋 Listado de Inventario</h2>
+            <div id="product-list-container">
+                <p>Cargando inventario...</p>
+            </div>
+        </section>
+    </main>
+
+    <div id="settings-modal" class="modal" style="display: none;">
+        <div class="modal-content card">
+            <h3>🎨 Personalización de Vista</h3>
+            <div class="field">
+                <label>Color de Tema:</label>
+                <select id="theme-select" onchange="changeTheme(this.value)">
+                    <option value="light">Modo Claro</option>
+                    <option value="dark">Modo Oscuro</option>
+                    <option value="ocean">Océano Azul</option>
+                    <option value="forest">Bosque Verde</option>
+                </select>
+            </div>
+            <div class="field">
+                <label>Tipo de Letra:</label>
+                <select id="font-select" onchange="changeFont(this.value)">
+                    <option value="-apple-system, BlinkMacSystemFont, 'Segoe UI'">Sistema</option>
+                    <option value="'Georgia', serif">Serif</option>
+                    <option value="'Courier New', monospace">Monospace</option>
+                </select>
+            </div>
+            <button onclick="toggleSettings()" class="btn-primary" style="width: 100%; margin-top: 10px;">Cerrar</button>
+        </div>
+    </div>
+
+    <script src="ui-settings.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>

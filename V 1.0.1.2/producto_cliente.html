@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Detalle del Producto | UBOX</title>
+    <link rel="stylesheet" href="style.css"> 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+</head>
+<body>
+
+    <header class="main-header">
+        <div class="header-content">
+            <h1>📦 Detalle del Producto</h1>
+            <nav class="nav-group">
+                <button onclick="window.location.href='catalogo_cliente.html'" class="btn-nav">← Volver al Catálogo</button>
+            </nav>
+        </div>
+    </header>
+
+    <main id="product-detail-container">
+        <p id="loading-message" style="text-align: center; margin-top: 50px;">Cargando información...</p>
+    </main>
+    
+    <div id="cart-actions" style="max-width: 850px; margin: 20px auto; text-align: center;">
+        <button onclick="window.location.href='carrito_cliente.html'" class="button" style="background-color: #28a745; font-weight: bold;">🛒 IR AL CARRITO</button>
+    </div>
+
+
+    
+    <script src="producto.js"></script>
+</body>
+</html>

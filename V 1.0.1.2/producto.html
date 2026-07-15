@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Detalle del Producto | UBOX</title>
+    <link rel="stylesheet" href="style.css"> 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+</head>
+<body>
+
+    <header class="main-header">
+        <div class="header-content">
+            <h1>📦 Detalle del Producto</h1>
+            <nav class="nav-group">
+                <button onclick="window.location.href='catalogo.html'" class="btn-nav">← Volver al Catálogo</button>
+                <button onclick="toggleSettings()" class="btn-nav" style="background-color: #555;">🎨 Temas</button>
+            </nav>
+        </div>
+    </header>
+
+    <main id="product-detail-container">
+        <p id="loading-message" style="text-align: center; margin-top: 50px;">Cargando información...</p>
+    </main>
+    
+    <div id="cart-actions" style="max-width: 850px; margin: 20px auto; text-align: center;">
+        <button onclick="window.location.href='carrito.html'" class="button" style="background-color: #28a745; font-weight: bold;">🛒 IR AL CARRITO</button>
+    </div>
+
+    <div id="settings-modal" class="modal" style="display: none;">
+        <div class="modal-content card">
+            <h3>🎨 Personalización</h3>
+            <select id="theme-select" onchange="changeTheme(this.value)">
+                <option value="dark">Modo Oscuro</option>
+                <option value="light">Modo Claro</option>
+            </select>
+            <button onclick="toggleSettings()" class="btn-primary" style="margin-top: 10px; width: 100%;">Cerrar</button>
+        </div>
+    </div>
+
+    <script src="ui-settings.js"></script>
+    <script src="producto.js"></script>
+</body>
+</html>
