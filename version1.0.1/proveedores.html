@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Suministros | Gestión de Almacén</title>
+    <link rel="stylesheet" href="style.css"> 
+</head>
+<body class="admin-body">
+
+    <header class="main-header">
+        <div class="header-content">
+            <h1>🏭 Control de Suministros</h1>
+            <nav class="nav-group">
+                <button onclick="window.location.href='index.html'" class="btn-nav">📦 Inventario</button>
+                <button onclick="window.location.href='catalogo.html'" class="btn-nav">🛒 Catálogo</button>
+                <button onclick="toggleSettings()" class="btn-nav" style="background-color: #555;">🎨 Temas</button>
+            </nav>
+        </div>
+    </header>
+
+    <main class="dashboard-grid">
+        
+        <aside class="forms-column">
+            
+            <section class="card restock-card">
+                <div class="card-header">
+                    <h2>🚚 Entrada de Mercancía</h2>
+                </div>
+                <form id="restock-form" class="vertical-form">
+                    <div class="field">
+                        <label for="restock-product-select">Producto:</label>
+                        <select id="restock-product-select" required>
+                            <option value="">Cargando productos...</option>
+                        </select>
+                    </div>
+
+                    <div class="field">
+                        <label for="restock-supplier-select">Proveedor (Opcional):</label>
+                        <select id="restock-supplier-select">
+                            <option value="">-- No especificar --</option>
+                        </select>
+                    </div>
+                    
+                    <div class="field">
+                        <label for="restock-quantity">Cantidad a añadir:</label>
+                        <input type="number" id="restock-quantity" min="1" placeholder="Ej: 50" required>
+                    </div>
+
+                    <button type="submit" class="btn-primary full-width">
+                        📥 Registrar y Generar PDF
+                    </button>
+                </form>
+                <div id="restock-results" class="msg-box"></div>
+            </section>
+
+            <section class="card supplier-card">
+                <div class="card-header">
+                    <h2 id="form-title">👤 Nuevo Proveedor</h2>
+                </div>
+                <form id="supplier-form" class="vertical-form">
+                    <input type="hidden" id="supplier-id"> 
+                    
+                    <div class="field">
+                        <label for="supplier-name">Nombre de la Empresa:</label>
+                        <input type="text" id="supplier-name" placeholder="Razón Social" required>
+                    </div>
+
+                    <div class="field">
+                        <label for="contact-name">Persona de Contacto:</label>
+                        <input type="text" id="contact-name" placeholder="Ej: Juan Pérez">
+                    </div>
+
+                    <div class="grid-fields">
+                        <div class="field">
+                            <label for="supplier-phone">WhatsApp/Tel:</label>
+                            <input type="tel" id="supplier-phone" placeholder="Ej: 5512345678">
+                        </div>
+                        <div class="field">
+                            <label for="supplier-email">Email corporativo:</label>
+                            <input type="email" id="supplier-email" placeholder="correo@ejemplo.com">
+                        </div>
+                    </div>
+
+                    <div class="field">
+                        <label for="supplier-address">Dirección Física (Maps):</label>
+                        <textarea id="supplier-address" rows="2" placeholder="Calle, Número, Colonia..."></textarea>
+                    </div>
+
+                    <div class="button-actions">
+                        <button type="submit" id="submit-button" class="btn-accent">Guardar Datos</button>
+                        <button type="button" onclick="resetForm()" class="btn-secondary">Limpiar</button>
+                    </div>
+                </form>
+            </section>
+        </aside>
+
+        <section class="table-column">
+            <div class="card table-card">
+                <div class="card-header">
+                    <h2>📋 Directorio de Proveedores</h2>
+                </div>
+                <div id="supplier-list-container" class="table-responsive">
+                    <p class="loading-text">Obteniendo datos del servidor...</p>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <div id="settings-modal" class="modal" style="display: none;">
+        <div class="modal-content card">
+            <h3>🎨 Personalización de Vista</h3>
+            <div class="field">
+                <label>Color de Tema:</label>
+                <select id="theme-select" onchange="changeTheme(this.value)">
+                    <option value="light">Modo Claro (Default)</option>
+                    <option value="dark">Modo Oscuro</option>
+                    <option value="ocean">Océano Azul</option>
+                    <option value="forest">Bosque Verde</option>
+                </select>
+            </div>
+            <div class="field">
+                <label>Tipo de Letra:</label>
+                <select id="font-select" onchange="changeFont(this.value)">
+                    <option value="-apple-system, BlinkMacSystemFont, 'Segoe UI'">Sistema (Moderna)</option>
+                    <option value="'Georgia', serif">Serif (Elegante)</option>
+                    <option value="'Courier New', monospace">Monospace (Técnica)</option>
+                </select>
+            </div>
+            <button onclick="toggleSettings()" class="btn-primary" style="width: 100%; margin-top: 10px;">Cerrar y Guardar</button>
+        </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.5.28/jspdf.plugin.autotable.min.js"></script>
+    
+    <script src="ui-settings.js"></script>
+    <script src="proveedor.js"></script>
+</body>
+</html>

@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Menú Principal | Sistema de Gestión</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="auth.js"></script>
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            text-align: center;
+            background-color: #1e1e2f;
+        }
+
+        .menu-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            max-width: 800px;
+            width: 100%;
+            padding: 20px;
+        }
+
+        .menu-card {
+            background: #27293d;
+            padding: 30px;
+            border-radius: 15px;
+            text-decoration: none;
+            color: white;
+            transition: transform 0.3s, background 0.3s;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+        }
+
+        .menu-card:hover {
+            transform: translateY(-5px);
+            background: #32354f;
+        }
+
+        .menu-card h3 {
+            margin-top: 15px;
+            font-size: 1.2rem;
+        }
+
+        .icon {
+            font-size: 3rem;
+        }
+
+        .logout-btn {
+            margin-top: 40px;
+            background: #ff4b5c;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1rem;
+        }
+
+        .logout-btn:hover {
+            background: #d43f4d;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1 style="color: #ffffff; margin-bottom: 40px;">📌 Menú Principal</h1>
+    
+    <div class="menu-container">
+        <!-- 1. INVENTARIO -->
+        <a href="index.html" class="menu-card">
+            <span class="icon">📦</span>
+            <h3>Gestión Inventario</h3>
+            <p style="font-size:0.9em; color:#aaa;">Administrar productos y stock</p>
+        </a>
+
+        <!-- 2. CATÁLOGO -->
+        <a href="catalogo.html" class="menu-card">
+            <span class="icon">🛒</span>
+            <h3>Catálogo Clientes</h3>
+            <p style="font-size:0.9em; color:#aaa;">Vista para venta</p>
+        </a>
+
+        <!-- 3. PRODUCTO -->
+        <a href="producto.html" class="menu-card">
+            <span class="icon">🏷️</span>
+            <h3>Detalle Producto</h3>
+            <p style="font-size:0.9em; color:#aaa;">Vista individual</p>
+        </a>
+
+        <!-- 4. PROVEEDORES -->
+        <a href="proveedores.html" class="menu-card">
+            <span class="icon">🏭</span>
+            <h3>Proveedores</h3>
+            <p style="font-size:0.9em; color:#aaa;">Gestionar proveedores</p>
+        </a>
+        
+            <!-- 5. CARRITO -->
+        <a href="carrito.html" class="menu-card">
+            <span class="icon">🛍️</span>
+            <h3>Carrito de Compras</h3>
+            <p style="font-size:0.9em; color:#aaa;">Ver mi carrito</p>
+        </a>
+    </div>
+
+    <script>
+        // Protección de ruta (Igual que en las demás páginas)
+        (function checkAuth() {
+            const loggedIn = localStorage.getItem('isLoggedIn');
+            if (!loggedIn) {
+                window.location.href = 'login.html';
+            }
+        })();
+    </script>
+
+    <div style="margin-top:20px">
+        <button id="logout-btn-page" class="logout-btn" onclick="logout()">🚪 Cerrar Sesión</button>
+    </div>
+
+    <script src="ui-settings.js"></script>
+    <script src="menu.js"></script>
+
+</body>
+
+</html>
