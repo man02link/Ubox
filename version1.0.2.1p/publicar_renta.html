@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>U-Box | Registrar Equipo de Renta</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body style="background-color: #1a1a1a; color: white;">
+
+    <div class="container mt-5">
+        <div class="card bg-dark text-white border-secondary mx-auto" style="max-width: 600px;">
+            <div class="card-header border-secondary">
+                <h3 class="text-info">🆕 Registrar Nuevo Equipo para Renta</h3>
+            </div>
+            <div class="card-body">
+                <form id="form-publicar-renta">
+                    <div class="mb-3">
+                        <label class="form-label">Nombre del Equipo</label>
+                        <input type="text" id="rent_name" class="form-control bg-dark text-white border-secondary" required placeholder="Ej. Proyector Epson X41">
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6 mb-3">
+                            <label class="form-label">Precio Renta (Día)</label>
+                            <input type="number" id="rent_price" class="form-control bg-dark text-white border-secondary" required step="0.01">
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <label class="form-label">Número de Serie / Placa</label>
+                            <input type="text" id="rent_serial" class="form-control bg-dark text-white border-secondary" required placeholder="SN-12345">
+                        </div>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Descripción / Estado Físico</label>
+                        <textarea id="rent_desc" class="form-control bg-dark text-white border-secondary" rows="2"></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-info w-100 fw-bold text-white">Publicar en Catálogo de Rentas</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById('form-publicar-renta').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const payload = {
+                id: crypto.randomUUID(),
+                name: document.getElementById('rent_name').value,
+                rental_price_day: document.getElementById('rent_price').value,
+                serial_number: document.getElementById('rent_serial').value,
+                description: document.getElementById('rent_desc').value,
+                createdAt: new Date().toISOString()
+            };
+
+            const res = await fetch('http://localhost:3000/api/products-rent', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(payload)
+            });
+
+            if (res.ok) {
+                alert("Equipo registrado correctamente");
+                window.location.href = 'catalogo_rentas.html';
+            }
+        });
+    </script>
+</body>
+</html>
